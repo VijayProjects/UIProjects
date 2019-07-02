@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>alignment in html</title>
+    <style>
+        caption{
+            color: red;
+        }
+        thead{
+            background-color: black;
+            color:white;
+        }
+    </style>
+</head>
+<body>
+    <table width="400"  height="200" rules="all" frame="box" align="center">
+        <caption>Products Details</caption>
+        <thead>
+            <th align="left">Id</th>
+            <th>Name</th>
+            <th align="right">Price</th>
+        </thead>
+        <tbody>
+            <tr valign="top">
+            <td align="left">100</td>
+            <td>Samsung TV</td>
+            <td align="right">55055.44</td>
+            </tr>
+            <tr align="center" valign="bottom">
+            <td>101</td>
+            <td>Nike casuals</td>
+            <td>2000</td>
+            </tr>
+            <tr>
+            <td>103</td>
+            <td>RedMi note7</td>
+            <td>16999.00</td>
+            </tr>
+        </tbody>
+        <tfoot>
+            <tr>
+                <td>&nbsp;</td>
+                <td align="center">&copy;Copyrigth-2019</td>
+                <td>&nbsp;</td>
+            </tr>
+        </tfoot>
+    </table>
+</body>
+</html>

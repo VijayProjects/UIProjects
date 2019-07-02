@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Reference | DOM</title>
+    <script languages="javascript">
+        function f1(){
+            window.document.images[0].src="../Images/car1.jpg";
+            window.document.forms[0].elements[1].value="Submit";
+        }
+        
+    </script>
+</head>
+<body onload="f1()">
+    <img width="100" height="100" border="1">
+    <br>
+    <form action="">
+        <input type="text">
+        <input type="button">
+    </form>
+</body>
+</html>

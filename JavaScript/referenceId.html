@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Reference | Id Attribute</title>
+    <script languages="javascript">
+        function f1(){
+          document.getElementById("pic").src="../Images/car3.jpg";
+          document.getElementById("btnSubmit").value="Submit";
+        }
+        
+    </script>
+</head>
+<body onload="f1()">
+    <img width="100" height="100" border="1" id="pic">
+    <br>
+    <form name="frm">
+        <input type="text">
+        <input type="button" id="btnSubmit">
+    </form>
+</body>
+</html>

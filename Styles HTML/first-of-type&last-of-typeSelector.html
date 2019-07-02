@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>first-of-type and last-of-type Selector</title>
+    <style>
+       tr:first-of-type{
+           background-color: red;
+       }
+       tr:last-of-type{
+           background-color: yellow;
+       }
+    </style>
+</head>
+<body>
+   <table rules="all" frame="box" align="center" width="400">
+       <tr>
+           <td>Item-1</td>
+           <td>Item-2</td>
+           <td>Item-3</td>
+           <td>Item-4</td>
+       </tr>
+       <tr>
+           <td>A</td>
+           <td>B</td>
+           <td>C</td>
+           <td>D</td>
+       </tr>
+       <tr>
+           <td>I</td>
+           <td>I</td>
+           <td>III</td>
+           <td>IV</td>
+       </tr>
+   </table>
+</body>
+</html>

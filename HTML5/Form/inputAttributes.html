@@ -1,0 +1,68 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>InputTag Attributes</title>
+</head>
+<body>
+    <form action="">
+        <table align="center"> 
+            <tr>
+                <td>UserName</td>
+                <td><input type="text" value="vijay" autofocus></td>
+            </tr>
+            <tr>
+                <td>password</td>
+                <td><input type="password" placeholder="password"></td>
+            </tr>
+            <tr>
+                <td>Data Of Birth</td>
+                <td><input type="date"></td>
+            </tr>
+            <tr>
+                <td>Email</td>
+                <td><input type="email" disabled placeholder="Email Here"></td>
+            </tr>
+            <tr>
+                <td>Color</td>
+                <td><input type="color"></td>
+            </tr>
+            <tr>
+                <td>File</td>
+                <td><input type="file"></td>
+            </tr>
+            <tr>
+                <td>URL</td>
+                <td><input type="url"></td>
+            </tr>
+            <tr>
+                <td>Phone</td>
+                <td><input type="tel"></td>
+            </tr>
+            <tr>
+                <td>City</td>
+                <td><input type="text" pattern="[A-Z]{4,10}"></td>
+            </tr>
+            <tr>
+                <td>State</td>
+                <td><input type="text" list="datalist" placeholder="eg.AP,TS "></td>
+            </tr>
+            <tr>
+                <td colspan="2" align="center">
+                    <button>Submit</button>
+                </td>
+            </tr>
+        </table>
+        <datalist id="datalist">
+            <option value="TS">TS</option>
+            <option value="AP">AP</option>
+            <option value="DEL">DEL</option>
+            <option value="MUM">MUM</option>
+            <option value="MD">MD</option>
+        </datalist>
+    </form>
+</body>
+</html>
