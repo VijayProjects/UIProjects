@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Reference Count of Tags</title>
+    <style type="text/css">
+        .btn{
+            background-color: green;
+            color: #fff;
+            font-size: 10px;
+        }
+    </style>
+
+    <script language="javascript">
+        function onloadBody(){
+            var x= document.getElementsByTagName("button").length;
+            document.write("Total no.of elements which have btn ="+x);
+        }
+    </script>
+</head>
+<body onload="onloadBody()">
+    <h2>Register</h2>
+    <input type="text" class="btn"><br>
+    <button class="btn">Remove</button>
+    <button class="btn">Cancel</button>
+</body>
+</html>

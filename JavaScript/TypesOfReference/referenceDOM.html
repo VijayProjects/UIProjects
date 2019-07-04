@@ -4,22 +4,21 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Reference | Name Attribute</title>
+    <title>Reference | DOM</title>
     <script languages="javascript">
         function f1(){
-            pic.src="../Images/car2.jpg";
-           // btnSubmit.value="Submit"; //this invalid bcz It is the child of form
-           frm.btnSubmit.value="Register";
+            window.document.images[0].src="../../Images/car1.jpg";
+            window.document.forms[0].elements[1].value="Submit";
         }
         
     </script>
 </head>
 <body onload="f1()">
-    <img width="100" height="100" border="1" name="pic">
+    <img width="100" height="100" border="1">
     <br>
-    <form name="frm">
+    <form action="">
         <input type="text">
-        <input type="button" name="btnSubmit">
+        <input type="button">
     </form>
 </body>
 </html>
