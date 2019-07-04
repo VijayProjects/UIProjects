@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>JS | InputForms</title>
+    <link rel="stylesheet" href="../../node_modules/bootstrap/dist/css/bootstrap.min.css">
+    <script>
+        function registerProduct(){
+            document.getElementById("prodDetails").style.display="block";
+            document.getElementById("regProductForm").style.display="none";
+            
+
+            var checkedValue= document.getElementById("cbxTrue").checked;
+            var UncheckedValue= document.getElementById("cbxFalse").checked;
+
+            document.getElementById("lblId").innerHTML=
+            document.getElementById("txtId").value;
+            
+            document.getElementById("lblName").innerHTML=
+            document.getElementById("txtName").value;
+            
+            document.getElementById("lblPrice").innerHTML=
+            document.getElementById("txtPrice").value;
+            
+            document.getElementById("lblCity").innerHTML=
+            document.getElementById("lstCity").value;
+
+            if(checkedValue){
+                document.getElementById("lblStock").innerHTML="Stock Available";
+            }
+            if(UncheckedValue){
+                document.getElementById("lblStock").innerHTML="Out of Stock";
+            }
+        }
+
+        function hideProductTable(){
+            document.getElementById("prodDetails").style.display="none";
+        }
+    </script>
+</head>
+<body onload="hideProductTable()">
+    <div class="container">
+        <div id="regProductForm">    
+        <fieldset>
+                <legend>Register Products</legend>
+                <dt>Product Id</dt>
+                <dd><input  type="number" id="txtId"></dd>
+                <dt>Product Name</dt>
+                <dd><input type="text" id="txtName"></dd>
+                <dt>Price</dt>
+                <dd><input type="number" id="txtPrice"></dd>
+                <dt>Is In Stock</dt>
+                <dd>
+                <input type="checkbox" id="cbxTrue">Yes
+                <input type="checkbox" id="cbxFalse">No
+                </dd>
+                <dt>ShippingTo</dt>
+                <dd>
+                    <select id="lstCity">
+                        <option>Hyd</option>
+                        <option>Delhi</option>
+                        <option>Odishas</option>
+                    </select>
+                </dd>
+                <br>
+                <input class ="btn btn-primary" type="button" value="Add" onclick="registerProduct()">
+            </fieldset>
+        </div>    
+        <br><br>
+       
+        <div id="prodDetails">
+            <fieldset>
+                <legend>Product Details</legend>
+                <table class="table table-secondary">
+                    <tr>
+                        <td>Product Id</td>
+                        <td id="lblId"></td>
+                    </tr>
+                    <tr>
+                        <td>Product Name</td>
+                        <td id="lblName"></td>
+                    </tr>
+                    <tr>
+                        <td>Product Price</td>
+                        <td id="lblPrice"></td>
+                    </tr>
+                    <tr>
+                        <td>ShippingTo</td>
+                        <td id="lblCity"></td>
+                    </tr>
+                    <tr>
+                        <td>Is In Stock</td>
+                        <td id="lblStock"></td>
+                    </tr>
+                </table>
+                <br>
+                <a class="btn btn-primary" href="inputForms.html">Back</a>
+            </fieldset>
+        </div>
+    </div>
+</body>
+</html>

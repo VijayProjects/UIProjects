@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>JS | prompt()</title>
+    <script>
+        function Create(){
+            var name=prompt("Create New Folder","New_Folder");
+            if(name==""){
+                document.write("Empty name entered");
+            }else if(name==null){
+                document.write("You canceled");
+            }else{
+                document.getElementById("msg").innerHTML="<h2>"+name+"</h2>";
+            }
+        }
+    </script>
+</head>
+<body>
+    <button id="btnFolder" onclick="Create()">Create Folder</button>
+    <br>
+    Create Folder:<div id="msg"></div>
+</body>
+</html>
