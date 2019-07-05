@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>JS | Primitive Types</title>
+    <script type="text/javascript">
+        "use strict";
+        function f1(){
+            //number Type
+            var x=2e3;//exponential
+            document.write("<u>Number Type</u>:<br>integer,float,double,decimal and exponential<br>");
+            document.write("x = "+x );
+
+            //String Type
+            var s1="Vijay";
+            var s2='Vijay';
+            var s3=`Vijay`;//valid
+            var path="\"D:\\Images\\car.jpg\"";
+            document.write("<br><br><u>String Type:</u><br>");
+            document.write("Name = "+s3);
+            document.write("<br>Path = "+path);
+
+            /*
+            Boolean Type:
+            -------------
+            1.boolean values are 'true' or 'false'
+            2.If you use boolean in arithemetic operation then
+              true=1 and false=0.
+            3.If you use boolean values in condition statements,then
+              they are 'true' or 'false' only ,but not 1 or 0
+              
+              ex:
+
+            */
+            var x=true;
+            var y=true;
+            document.write("<br><br><u>Boolean Type:</u><br>")
+            document.write("x = "+x);//x = true
+            document.write("<br>x+y = "+(x+y));//x+y= 2;
+
+            /*
+            Nndefinde Type:
+            ---------------
+            1.If you don't asigning value into variable,then 
+              that will return 'undefined' type as the result
+            */
+            var bookName="JavaScript Book";
+            var bookPrice= 150.45;
+            document.write("<br><br><u>Undefined Type:</u><br>");
+            if(bookPrice==undefined){
+                document.write("BookName = "+bookName);
+            }else{
+                document.write("BookName = "+bookName+" <br> Price = "+bookPrice);
+            }
+
+            /*
+            Null Type:
+            ----------
+            1.No values are assigning in dynamically ,then that
+              will return 'null' values.
+              ex: see the example prompt(string messge,string defaultMessage);
+            */
+        }
+        f1();
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

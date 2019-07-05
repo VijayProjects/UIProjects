@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>JS | variables</title>
+    <script type="text/javascript">
+        "use strict";
+        var x=10;//global
+        function f1(){
+            window.y=20;//global 
+            document.write("x in f1=" + x + "<br>y in f1=" +y);
+        }
+        function f2(){
+            document.write("<br>x in f2=" + x + "<br>y in f2=" +y);
+        }
+        f1();
+        f2();
+    </script>
+</head>
+<body>
+    
+</body>
+</html>
