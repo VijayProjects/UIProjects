@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Hotel Booking</title>
+    <link rel="stylesheet" href="../node_modules/bootstrap/dist/css/bootstrap.css">
+    <style type="text/css">
+        #center{
+            margin:0 auto;
+            width:600px;
+            
+            }
+           .cust-details{
+               width: 600px;
+               margin:0 auto;
+               border: 2px solid ;
+               text-align: center;
+               background-color: rgb(225, 248, 248);
+           }
+           .booking-popup{
+               border: 2px solid;
+               margin: 0 auto;
+               padding: 50px;
+               background-color: rgb(202, 245, 238);
+               display: none;
+           }
+           .txtErrors{
+               color: red;
+           }
+    </style>
+    <script>
+        "use strict";
+        var lockerAmt=0;
+        var acAmt=0;        //global variables
+        var totalAmount=0;
+        function bookSummary(){
+            var txtName="";
+            var txtCheckIn="";
+            var noofDays=0;
+            var noofPersons=0;
+            var optDelux="";
+            var optSuite="";
+            var roomType="";
+            var roomCost=0;
+            var optLocker=0;
+            var optAc=0;
+            var eminitiesType1="";
+            var eminitiesType2="";
+            var advanceAmount=0;
+           
+            
+            document.getElementById("bookingDetails").style.display="none";
+            document.getElementById("popup").style.display="block";
+
+            //getting form values
+            txtName=document.getElementById("txtName").value;
+            txtCheckIn=document.getElementById("txtCheckIn").value;
+            noofDays=document.getElementById("txtDays").value;
+            noofPersons=document.getElementById("txtPersons").value;
+            optDelux=document.getElementById("optDelux");
+            optSuite=document.getElementById("optSuite");
+            optLocker=document.getElementById("optLocker");
+            optAc=document.getElementById("optAc");
+            advanceAmount=document.getElementById("txtAdvance").value;
+
+           
+            //check the conditions
+            if(optDelux.checked){
+                roomType=optDelux.value;
+                roomCost=(noofDays*2000);
+            }
+            if(optSuite.checked){
+                roomType=optSuite.value;
+                roomCost=(noofDays*3000);
+            }
+
+            function selectEminities(){
+                //choose both options
+                if(optLocker.checked && optAc.checked){
+                    eminitiesType1=optLocker.value;
+                    eminitiesType2=optAc.value;
+                    lockerAmt=(noofPersons*500);
+                    acAmt=(noofPersons*1000);
+                    totalAmount+=lockerAmt+acAmt;
+                    return eminitiesType1+"(&#8377;"+lockerAmt+") and "+eminitiesType2+"(&#8377;"+acAmt+")";
+                }
+                //choose only locker
+                if(optLocker.checked){
+                    eminitiesType1=optLocker.value;
+                    lockerAmt=(noofPersons*500);
+                    totalAmount+=lockerAmt;
+                    return eminitiesType1+"(&#8377;"+lockerAmt+")";
+                }
+                //choose only AC
+                if(optAc.checked){
+                    eminitiesType2=optAc.value;
+                    acAmt=(noofPersons*1000);
+                    totalAmount+=acAmt;
+                    return eminitiesType2+"(&#8377;"+acAmt+")";
+                }
+            }
+            totalAmount=(totalAmount+roomCost);
+           
+            //keep booking summary into popup
+            document.getElementById("lblName").innerHTML=txtName;
+            document.getElementById("lblRoom").innerHTML=roomType;
+            document.getElementById("lblCheckIn").innerHTML=txtCheckIn;
+            document.getElementById("lblDays").innerHTML=noofDays;
+            document.getElementById("lblPersons").innerHTML=noofPersons;
+            document.getElementById("lblRoomCost").innerHTML=roomCost;
+            document.getElementById("lblEminities").innerHTML=selectEminities();
+            document.getElementById("lblTotAmount").innerHTML=totalAmount;
+            document.getElementById("lblAdvance").innerHTML=advanceAmount;
+            document.getElementById("lblFinalAmt").innerHTML=(totalAmount-advanceAmount);
+
+        }
+        function clickOk(){
+            document.getElementById("bookingDetails").style.display="block";
+            document.getElementById("popup").style.display="none";
+        }
+    </script>
+</head>
+<body>
+    <div class="container">
+        <div id="center">
+            <br>
+            <div id="bookingDetails">
+                <h2 class="btn-danger btn-block text-center font-italic">Hotel Reservation</h2>
+                <div class="cust-details">
+                    <br>
+                    <div>
+                        <label for="txtName" class="col-form-label">Custemer Name</label>
+                        <input id="txtName" type="text" class="form-control-sm">
+
+                    </div>
+                    <div>
+                        <label for="txtCheckIn" class="col-form-label">Check-in Date</label>
+                        <input id="txtCheckIn" type="date" class="form-control-sm">
+                    </div>
+                    <div>
+                        <label for="txtDays" class="col-form-label">No.of days</label>
+                        <input id="txtDays" type="number" class="form-control-sm">
+                    </div>
+                    <div>
+                        <label for="txtPersons" class="col-form-label">No.of Persons</label>
+                        <input id="txtPersons" type="number" class="form-control-sm">
+                    </div> 
+                    <br> 
+                </div>
+                <div>
+                    <fieldset class="border p-4" style=" background-color: rgb(225, 248, 248);">
+                        <legend class="w-auto text-center text-danger">Room Type</legend>
+                        <div class=" row card-deck">
+                            <div class="card">
+                                <div  class="card-header text-center bg-info text-white">
+                                    Delux Room
+                                </div>
+                                <div class="card-body">
+                                    <label for="optDelux">
+                                        <img src="../Images/deluxroom.jpg" alt="" width="100%" height="100%">
+                                    </label>
+                                    <br>
+                                    <input id="optDelux" type="radio" name="optRoom" value="Delux Room">Choose Room
+                                </div>
+                                <div class="card-footer text-center bg-info text-white">
+                                    &#8377; 2000/-per day
+                                </div>
+                            </div>    
+                            <div class="card">
+                                <div  class="card-header text-center bg-info text-white">
+                                    Suite Room
+                                </div>
+                                <div class="card-body">
+                                    <label for="optSuite">
+                                        <img src="../Images/suiteroom.jpg" alt="" width="100%" height="150">
+                                    </label>
+                                    <br>
+                                    <input id="optSuite" type="radio" name="optRoom" value="Suite Room">Choose Room
+                                </div>
+                                <div class="card-footer text-center bg-info text-white">
+                                    &#8377; 3000/-per day
+                                </div>                         
+                            </div>       
+                        </div>    
+                    </fieldset>
+                </div>
+                <div>
+                    <fieldset class="border p-4" style=" background-color: rgb(225, 248, 248);">
+                        <legend class="w-auto text-center text-danger">Eminities</legend>
+                        <table border="0" cellspacing="40" width="100%">
+                            <tr>
+                                <td>
+                                    <label for="optLocker">
+                                        <img src="../Images/lockerroom.jpg" alt="" width="250" height="200">
+                                    </label>
+                                </td>
+                                <td>
+                                    <label for="optAc">
+                                        <img src="../Images/achotel.jpg" alt="" width="250" height="200">
+                                    </label>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <input id="optLocker" type="checkbox" value="Locker cost">
+                                    <font size="4" color="purple">locker (500/-per person)</font>
+                                </td>
+                                <td>
+                                    <input id="optAc" type="checkbox" value="Ac cost">
+                                    <font size="4" color="purple">AC (1000/-per person)</font>
+                                </td>
+                            </tr>
+                        </table>
+                    </fieldset>
+                </div>
+                <br>
+                <!-- Amount Advance -->
+                <div class="cust-details">
+                    <label for="txtAdvance" class="col-form-label">Advance</label>
+                    <input id="txtAdvance" type="text" class="form-control-sm col-5s">
+                </div>
+                <br>
+                <div>
+                    <button onclick="bookSummary()" class="btn btn-block btn-success text-uppercase">
+                        <font size="4">Book Hotel</font>
+                    </button>
+                </div>
+            </div>
+            <br><br>
+            <!-- Booking Summary-->
+            <div id="popup" class="booking-popup">
+                <h3 style="text-decoration: underline;color:brown;text-align: center">Booking Summary</h3>
+                <table width="100%">
+                    <tr>
+                        <td width="250">Customer Name</td>
+                        <td id="lblName"></td>
+                    </tr>
+                    <tr>
+                        <td>Room Type</td>
+                        <td id="lblRoom"></td>
+                    </tr>
+                    <tr>
+                        <td>Booking Date</td>
+                        <td id="lblCheckIn"></td>
+                    </tr>
+                    <tr>
+                        <td>No.of Days</td>
+                        <td id="lblDays"></td>
+                    </tr>
+                    <tr>
+                        <td>No.of Persons</td>
+                        <td id="lblPersons"></td>
+                    </tr>
+                    <tr>
+                        <td>Room Cost</td>
+                        <td id="lblRoomCost"></td>
+                    </tr>
+                    <tr>
+                        <td>Eminities</td>
+                        <td id="lblEminities"></td>
+                    </tr>
+                    <tr>
+                        <td>Total Amount</td>
+                        <td id="lblTotAmount"></td>
+                    </tr>
+                    <tr>
+                        <td>Advaced paid</td>
+                        <td id="lblAdvance"></td>
+                    </tr>
+                    <tr>
+                        <td>Final Amount</td>
+                        <td id="lblFinalAmt"></td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <button onclick="window.print()"  class="btn btn-primary">
+                                Print
+                            </button>
+                        </td>
+                        <td>
+                            <button onclick="clickOk()" class="btn btn-block btn-danger">go to booking</button>
+                        </td>
+                    </tr>
+                </table>               
+            </div>
+        </div>
+    </div><!--Close Container-->
+</body>
+</html>
