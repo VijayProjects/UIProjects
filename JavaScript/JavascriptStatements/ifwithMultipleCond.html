@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>JS | If  With Multiple Condition</title>
+        <link rel="stylesheet" href="../../node_modules/bootstrap/dist/css/bootstrap.css">
+        <script>
+            var cardDetails = {
+                cardNo: 777788889999,
+                cvvNo: 404,
+                expYear: 2020
+            };
+            function bodyLoad() {
+                document.getElementById("txtCvv").disabled = true;
+                document.getElementById("txtExpiry").disabled = true;
+                document.getElementById("btnPay").disabled = true;
+                
+            }
+            //verify Card
+            function verifyCard() {
+                var cardNumber = document.getElementById("txtCard").value;
+                if(cardNumber == cardDetails.cardNo){
+                    document.getElementById("txtCvv").disabled = false;
+                }
+            }
+            //verify Cvv
+            function verifyCvv() {
+                var cvvNumber = document.getElementById("txtCvv").value;
+                if(cvvNumber == cardDetails.cvvNo){
+                    document.getElementById("txtExpiry").disabled = false;
+                }
+            }
+            //verify Expiry Year
+            function verifyExpYear() {
+                var year = document.getElementById("txtExpiry").value;
+                if(year == cardDetails.expYear){
+                    document.getElementById("btnPay").disabled = false;
+                }
+            }
+            //verify pay
+            function verifyPay() {
+                var cardNumber = "";
+                var cvvNumber = "";
+                var expYear = "";
+                cardNumber = document.getElementById("txtCard").value;
+                cvvNumber = document.getElementById("txtCvv").value;
+                year = document.getElementById("txtExpiry").value;
+                if(cardNumber == cardDetails.cardNo){
+                    if(cvvNumber == cardDetails.cvvNo){
+                        if(year == cardDetails.expYear){
+                            location.href = "ifwithelse.html";
+                        }else {
+                            alert("Invalid Year");
+                        }
+                    }else {
+                        alert("Invalid CVV Number");
+                    }
+                }else {
+                    alert("Invalid Card Number");
+                }
+            }               
+        </script>
+    </head>
+    <body onload="bodyLoad()">
+        <div class="container">
+            <fieldset>
+                <legend>Payment Details</legend>
+                <div class="form-group">
+                    <label for="txtCard">Card Number</label>
+                    <div>
+                        <input onkeyup="verifyCard()" type="text" id="txtCard" class="form-control-sm" 
+                         maxlength="12" placeholder="eg: 5555-xxxx-xxxx" size="30">
+                    </div>
+                    <label for="txtCvv">CVV Number</label>
+                    <div>
+                        <input onkeyup="verifyCvv()" type="text" id="txtCvv" style="width: 100px;" class="form-control-sm" 
+                         maxlength="3" placeholder="eg: xxx">
+                    </div>
+                    <label for="txtExpiry">Expiry Year</label>
+                    <div>
+                        <select onchange="verifyExpYear()" id="txtExpiry" class="form-control-sm">
+                            <option>2018</option>
+                            <option>2019</option>
+                            <option>2020</option>
+                        </select>
+                    </div>
+                    <br>
+                    <button onclick="verifyPay()" id="btnPay" class="btn btn-primary">Pay</button>
+                </div>
+            </fieldset>
+            
+        </div>
+    </body>
+</html>

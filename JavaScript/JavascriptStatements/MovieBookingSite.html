@@ -1,0 +1,412 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Ticket Booking</title>
+    <link rel="stylesheet" href="../../node_modules/bootstrap/dist/css/bootstrap.css">
+    <script>
+        var cities = ["Select a City","Hyderabad","Delhi"];
+        var hydCinemas = ["Select a Cinema","PVR Cinemas","Prasad IMAX","Big Cinemas"];
+        var delhiCinemas = ["Select a Cinema","Inox Cinemas","PVR City Walk","Wave Cinemas"];
+       
+        var hydPvrCinemas = ["Select a Movie","Sprider-Man (UA|English,Hindi,Telugu)","The Lion King (U|English,Telugu)",
+                            "Kabeer Sing (A|Hindi)","Super 30(U|Hindi)"];
+        var hydPrasadImax = ["Select a Movie","The Lion King (U|English,Telugu)","Sprider-Man (UA|English,Hindi,Telugu)",
+                            "Kabeer Sing (A|Hindi)","Super 30(U|Hindi)"];
+        var hydBigCinemas = ["Super 30(U|Hindi)","Kabeer Sing (A|Hindi)","Sprider-Man (UA|English,Hindi,Telugu)",
+                            "The Lion King (U|English,Telugu)"];
+        
+        var delInoxCinemas = ["Select a Movie","The Lion King (U|English,Telugu)","Sprider-Man (UA|English,Hindi,Telugu)",
+                            "Kabeer Sing (A|Hindi)","Super 30(U|Hindi)"];
+        var delPvrCity = ["Select a Movie","Super 30(U|Hindi)","Kabeer Sing (A|Hindi)","Sprider-Man (UA|English,Hindi,Telugu)",
+                            "The Lion King (U|English,Telugu)"];
+        var delWaveCinemas = ["Select a Movie","Sprider-Man (UA|English,Hindi,Telugu)","The Lion King (U|English,Telugu)",
+                            "Kabeer Sing (A|Hindi)","Super 30(U|Hindi)"];
+
+        var showTime1 = ["Select Show Time","11AM-Morinig Show","3PM-Noon Show","7PM-First Show","10PM-Second Show"];
+        var showTime2 = ["Select Show Time","12AM-Startig Show","2:15PM-Second Show","6PM-Evening Show","09PM-Night Show"];
+        var showTime3 = ["Select Show Time","11:30AM-First Show","2:30PM-Noon Show","7:45PM-Night Show","10:30PM-Last Show"];
+        var showTime4 = ["Select Show Time","10:30AM-Beginig Show","1:25PM-Matney Show","7:45PM-First Show","10:30PM-Second Show"];
+
+        var imgMovie ;
+      
+        function bodyLoad() {
+            var lstCities = document.getElementById("lstCities");
+            var lstCinemas = document.getElementById("lstCinemas");
+            for(var i = 0; i<cities.length; i++) {
+                var opt = document.createElement("option");
+                opt.text = cities[i];
+                if(cities[i] == "Select a City") {
+                    var opt1 = document.createElement("option");
+                    opt1.text = "choosen city is mandotory";
+                    lstCinemas.appendChild(opt1);
+                }
+                opt.value = cities[i];
+                lstCities.appendChild(opt);
+            } 
+        }
+        //function for Chaging City
+        function changeCity() {
+            var city = document.getElementById("lstCities").value;
+            var lstCinemas = document.getElementById("lstCinemas");
+            lstCinemas.innerHTML = "";
+          switch(city) {
+            case "Hyderabad":
+                createdOption(hydCinemas,lstCinemas);
+                break;
+            case "Delhi":
+                createdOption(delhiCinemas,lstCinemas);
+                break;
+            default:
+                var optDefault = document.createElement("option");
+                optDefault.text = "choosen city is mandotory";
+                lstCinemas.appendChild(optDefault);
+                break;
+          }
+        }
+
+        //function for changing Cimemas
+        function changeCinema() {
+            var city = document.getElementById("lstCities").value;
+            var cinema = document.getElementById("lstCinemas").value;
+            var lstMovies = document.getElementById("lstMovies");
+            lstMovies.innerHTML = "";
+            switch(city) {
+                case "Hyderabad":
+                    switch(cinema) {
+                        case "PVR Cinemas":
+                            createdOption(hydPvrCinemas,lstMovies);
+                            break;
+                        case "Prasad IMAX":
+                            createdOption(hydPrasadImax,lstMovies);
+                            break;
+                        case "Big Cinemas":
+                            createdOption(hydBigCinemas,lstMovies);
+                            break;
+                        default:
+                            break;
+                    }
+                    break;
+                case "Delhi":
+                    switch(cinema) {
+                        case "Inox Cinemas":
+                            createdOption(delInoxCinemas,lstMovies);
+                            break;
+                        case "PVR City Walk":
+                            createdOption(delPvrCity,lstMovies);
+                            break;
+                        case "Wave Cinemas":
+                            createdOption(delWaveCinemas,lstMovies);
+                            break;
+                        default:
+                            break;
+                    }
+                    break;
+            }
+        }
+
+        //function to change movie
+        function changeMovie() {
+            var lstCinemas = document.getElementById("lstCinemas");
+            var city = document.getElementById("lstCities").value;
+            var cinema = document.getElementById("lstCinemas").value;
+            var movie = document.getElementById("lstMovies").value;
+            var lstShowTime = document.getElementById("lstShowTime");
+            lstShowTime.innerHTML = "";
+            switch(city) {
+                case "Hyderabad":
+                    switch(cinema) {
+                        case "PVR Cinemas":
+                            switch(movie) {
+                                case "Sprider-Man (UA|English,Hindi,Telugu)":
+                                    createdOption(showTime2,lstShowTime);
+                                    imgMovie = "../../Images/spiderman1.jpg";
+                                    break;
+                                case "The Lion King (U|English,Telugu)":
+                                    createdOption(showTime1,lstShowTime);
+                                    imgMovie = "../../Images/lionking1.jpg";
+                                    break;
+                                case "Kabeer Sing (A|Hindi)":
+                                    createdOption(showTime4,lstShowTime);
+                                    imgMovie = "../../Images/kabirsing1.jpg";
+                                    break;
+                                case "Super 30(U|Hindi)":
+                                    createdOption(showTime3,lstShowTime);
+                                    imgMovie = "../../Images/super301.jpg"
+                                    //createdOption(hydPvrCost,lstTicketCost);
+                                    break;
+                            }//end movie
+                            break;
+                        case "Prasad IMAX":                        
+                            switch(movie) {
+                                case "The Lion King (U|English,Telugu)":
+                                    createdOption(showTime1,lstShowTime);
+                                    imgMovie = "../../Images/lionking2.jpg";
+                                    break;
+                                case "Sprider-Man (UA|English,Hindi,Telugu)":
+                                    createdOption(showTime3,lstShowTime);
+                                    imgMovie = "../../Images/spiderman2.jpg";
+                                    break;
+                                case "Kabeer Sing (A|Hindi)":
+                                    createdOption(showTime4,lstShowTime);
+                                    imgMovie = "../../Images/kabirsing2.jpg";
+                                    break;
+                                case "Super 30(U|Hindi)":
+                                    createdOption(showTime2,lstShowTime);
+                                    imgMovie = "../../Images/super302.jpg";
+                                    break;
+                            }//end prasad imax
+                            break;
+                        case "Big Cinemas":
+                            switch(movie) {
+                                case "Super 30(U|Hindi)":
+                                    createdOption(showTime4,lstShowTime);
+                                    imgMovie = "../../Images/super301.jpg";
+                                    break;
+                                case "Kabeer Sing (A|Hindi)":
+                                    createdOption(showTime2,lstShowTime);
+                                    imgMovie = "../../Images/kabirsing1.jpg";
+                                    break;
+                                case "Sprider-Man (UA|English,Hindi,Telugu)":
+                                imgMovie = "../../Images/spiderman1.jpg"
+                                    createdOption(showTime3,lstShowTime);
+                                    break;
+                                case "The Lion King (U|English,Telugu)":
+                                    createdOption(showTime1,lstShowTime);
+                                    imgMovie = "../../Images/lionking1.jpg";
+                                    break;
+                            }//end big cinemas
+                            break;
+                        default:
+                            break;
+                    }//end cinema
+                    break; 
+                case "Delhi":
+                    switch(cinema) {
+                        case "Inox Cinemas":
+                            switch(movie) {
+                                case "The Lion King (U|English,Telugu)":
+                                    createdOption(showTime3,lstShowTime);
+                                    imgMovie = "../../Images/lionking2.jpg";
+                                    break;
+                                case "Sprider-Man (UA|English,Hindi,Telugu)":
+                                    createdOption(showTime4,lstShowTime);
+                                    imgMovie = "../../Images/spiderman2.jpg";
+                                    break;
+                                case "Kabeer Sing (A|Hindi)":
+                                    createdOption(showTime1,lstShowTime);
+                                    imgMovie = "../../Images/kabirsing1.jpg";
+                                    break;
+                                case "Super 30(U|Hindi)":
+                                    createdOption(showTime2,lstShowTime);
+                                    imgMovie = "../../Images/super301.jpg";
+                                    break;
+                            }//end Inox cinemas
+                            break;
+                        case "PVR City Walk":
+                            switch(movie) {
+                                case "Super 30(U|Hindi)":
+                                    createdOption(showTime4,lstShowTime);
+                                    imgMovie = "../../Images/super302.jpg";
+                                    break;
+                                case "Kabeer Sing (A|Hindi)":
+                                    createdOption(showTime1,lstShowTime);
+                                    imgMovie = "../../Images/kabirsing2.jpg";
+                                    break;
+                                case "Sprider-Man (UA|English,Hindi,Telugu)":
+                                    createdOption(showTime3,lstShowTime);
+                                    imgMovie = "../../Images/spiderman1.jpg";
+                                    break;
+                                case "The Lion King (U|English,Telugu)":
+                                    createdOption(showTime2,lstShowTime);
+                                    imgMovie = "../../Images/lionking1.jpg"
+                                    break;
+                            }//end pvr city cinemas
+                            break;
+                        case "Wave Cinemas":
+                            switch(movie) {
+                                case "Sprider-Man (UA|English,Hindi,Telugu)":
+                                    createdOption(showTime3,lstShowTime);
+                                    imgMovie = "../../Images/spiderman1.jpg";
+                                    break;
+                                case "The Lion King (U|English,Telugu)":
+                                    createdOption(showTime4,lstShowTime);
+                                    imgMovie = "../../Images/lionking2.jpg";
+                                    break;
+                                case "Kabeer Sing (A|Hindi)":
+                                    createdOption(showTime2,lstShowTime);
+                                    imgMovie = "../../Images/kabirsing1.jpg";
+                                    break;
+                                case "Super 30(U|Hindi)":
+                                    createdOption(showTime1,lstShowTime);
+                                    imgMovie = "../../Images/super301.jpg";
+                                    break;
+                            }//end pvr city cinemas
+                            break;
+                        default:
+                            break;
+                    }//end cinema
+                    break;   
+                default:
+                var optDefault = document.createElement("option");
+                optDefault.text = "choosen city is mandotory";
+                lstCinemas.appendChild(optDefault);
+                break; 
+            }
+        }
+        //funtion  for resuable code
+        function createdOption(strValue,addToList) {
+            for(var i = 0; i<strValue.length; i++) {
+                    var opt = document.createElement("option");
+                    opt.text = strValue[i];
+                    opt.value = strValue[i];
+                    addToList.appendChild(opt);
+                }
+        }
+
+        //function for book ticket
+        function bookTicket() {
+            document.getElementById("popup").style.display = "block";
+            document.getElementById("posters").style.display = "none";
+
+            var cityName = document.getElementById("lstCities").value;
+            var cinemaName = document.getElementById("lstCinemas").value;
+            var movieName = document.getElementById("lstMovies").value;
+            var showtime = document.getElementById("lstShowTime").value;
+            var ticketCost = document.getElementById("lstTicketCost").value;
+            var noofSeats = document.getElementById("txtSeats").value
+
+            //keep those values in popup
+            document.getElementById("imgMoviePoster").src = imgMovie;
+            document.getElementById("lblCity").innerHTML = cityName;
+            document.getElementById("lblCinema").innerHTML = cinemaName;
+            document.getElementById("lblMovie").innerHTML = movieName;
+            document.getElementById("lblShowTime").innerHTML = showtime;
+            document.getElementById("lblSeats").innerHTML = noofSeats;""
+            switch(ticketCost) {
+                case "110":
+                    document.getElementById("lblCost").innerHTML = "Silver-&#8377;"+ticketCost;
+                    break;
+                case "250":
+                    document.getElementById("lblCost").innerHTML = "Gold-&#8377;"+ticketCost;
+                    break;
+                case "350":
+                    document.getElementById("lblCost").innerHTML = "Platinum-&#8377;"+ticketCost;
+                    break;
+                default:
+                    document.getElementById("lblCost").innerHTML = "Cost is not comming";
+                    break;
+            }
+            
+            document.getElementById("lblTotCost").innerHTML = (ticketCost*noofSeats);
+           
+
+        }
+
+    </script>
+    <style type="text/css">
+        #rightpane {
+           border: 0;
+        }
+        #popup {
+            margin: auto;
+            border :0;
+            display: none;
+        }
+        #imgMoviePoster {
+            width: 100%;
+            height: 250px;
+        }
+        #posters {
+            position: absolute;
+            top: 250px;
+            right: 100px;
+            width: 500px;
+        }
+        .imgPoster {
+            height: 200px;
+            width: 200px;
+        }
+    </style>
+</head>
+<body onload="bodyLoad()">
+    <div class="container">
+        <br>
+        <div>
+            <img src="../../Images/bookmyshowbanner.png" width="100%" height="150px;">
+        </div>
+        <div class="">
+            <marquee>
+                <h3 class="text-primary">Book My Show Online Movie Booking..</h3>
+            </marquee>
+        </div>
+        <br>
+        <div class="card-deck">
+            <!--leftpane-->
+            <div class="card bg-light">
+                <div class="card-body">
+                    <h3 class="text-center text-danger">Booking Details</h3>
+                    <div class="form-group">
+                        <select onchange="changeCity()" id="lstCities" class="form-control"></select><br>
+                        <select onchange="changeCinema()" id="lstCinemas" class="form-control"></select><br>
+                        <select onchange="changeMovie()" id="lstMovies" class="form-control"></select><br>
+                        <select id="lstShowTime" class="form-control"></select><br>
+                        <select id="lstTicketCost" class="form-control">
+                            <option value="">Choose a class</option>
+                            <option value="110">Silver-&#8377;110/-</option>
+                            <option value="250">Gold-&#8377;250/-</option>
+                            <option value="350">Platinum-&#8377;350/-</option>
+                        </select>
+                        <br>
+                        <input id="txtSeats" type="number" class="form-control" placeholder="select no.of seats"><br>
+                        <button onclick="bookTicket()" class="btn btn-block btn-outline-primary">Book Ticket</button>
+                    </div>
+                </div>
+            </div>
+            <!--rightpane-->
+            <div id="rightpane" class="card">
+                <div class="card-body">
+                    <div id="popup">
+                        <div>
+                            <img id ="imgMoviePoster">
+                        </div>
+                        <br>
+                        <div>
+                            <h3 class="text-success">Movie Booking Preview</h3>
+                            City Name&nbsp;&nbsp;&nbsp;&nbsp;<span id="lblCity"></span>
+                            <br>
+                            Cinema Name&nbsp;&nbsp;&nbsp;&nbsp;<span id="lblCinema"></span>
+                            <br>
+                            Novie Name&nbsp;&nbsp;&nbsp;&nbsp;<span id="lblMovie"></span>
+                            <br>
+                            Show Times&nbsp;&nbsp;&nbsp;&nbsp;<span id="lblShowTime"></span>
+                            <br>
+                            No.of Seats&nbsp;&nbsp;&nbsp;&nbsp;<span id="lblSeats"></span>
+                            <br>
+                            Ticket Type&nbsp;&nbsp;&nbsp;&nbsp;<span id="lblCost"></span>
+                            <br>
+                            Total Cost&nbsp;&nbsp;&nbsp;&nbsp;<span id="lblTotCost"></span>
+                            <br>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <br>
+        <footer>
+            <h5 class="text-center bg-secondary text-white">&copy; All Copyrights Reserved 2019-2020</h5>
+        </footer>
+        <div id="posters">
+            <h3>Updated Movies</h3>
+            <div class="rounded">
+                <img class="imgPoster" src="../../Images/spiderman1.jpg">
+                &nbsp;&nbsp;
+                <img clas="imgPoster" src="../../Images/super302.jpg">
+                <br>
+                <img class="imgPoster" src="../../Images/kabirsing1.jpg">
+                &nbsp;&nbsp;
+                <img class="imgPoster" src="../../Images/lionking1.jpg">
+            </div>
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Js | IfWithElse</title>
+        <link rel="stylesheet" href="../../node_modules/bootstrap/dist/css/bootstrap.css">
+        <link rel="stylesheet" href="../../styles/signin.css">
+    </head>
+    <style type="text/css">
+        .card {
+            position: fixed;
+            top: 100px;
+            left: 300px;
+            width: 300px;
+            height: 150px;
+            display: none;
+        }
+        .form-signin { 
+            position: fixed;
+            top: 50px;
+        }
+    </style>
+    <script type="text/javascript">
+        var userData = {uname:"vijay", password:"jay"};  
+        function verifyCredentials() {
+            var userName = "";
+            var userPwd = "";
+            userName = document.getElementById("txtName").value;
+            userPwd = document.getElementById("txtPwd").value;
+            if(userName === userData.uname && userPwd === userData.password) {
+                location.href = "../ArrayOfObjects.html";
+            }else {
+                document.getElementById("popup").style.display = "block";
+            }
+        }
+        function clickOk() {
+            document.getElementById("popup").style.display = "none";
+        }
+    </script>
+    <div class="container">
+        <div class="form-signin">
+            <h2>Login Form</h2>
+            <label>User Name</label>
+            <div>
+                <input id="txtName" type="text" class="form-control">
+            </div>
+            <label>Password</label>
+            <div>
+                <input id="txtPwd" type="password" class="form-control">
+            </div>
+            <br>
+            <div>
+                <button onclick= "verifyCredentials()" class="btn btn-primary btn-block">Login</button>
+            </div>
+        </div>
+        <div id="popup" class="card">
+            <div class="card-body">
+                <h3 class="text-danger">Invalid Credentials</h3>
+                <br>
+                <button onclick="clickOk()" class="btn btn-primary">OK</button>
+            </div>
+        </div>
+    </div>
+</html>
