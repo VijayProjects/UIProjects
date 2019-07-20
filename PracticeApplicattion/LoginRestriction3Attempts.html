@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Login Form</title>
+    <link rel="stylesheet" href="../node_modules/bootstrap/dist/css/bootstrap.css">
+    <link rel="stylesheet" href="../styles/signin.css">
+</head> 
+<style type="text/css">
+    .errorMsg {
+        color: red;
+    }
+</style>
+<script>
+    var userData = {userName:"vijay", userPwd:"vijay123"};
+    var loginAttempts = 3;
+
+    function removeErrMsg(value) {
+        switch(value) {
+            case "txtUname": 
+            document.getElementById("errUname").innerHTML = "";
+            document.getElementById("errLogin").innerHTML = "";
+            break;
+            case "txtPwd": 
+            document.getElementById("errPwd").innerHTML = "";
+            document.getElementById("errLogin").innerHTML = "";
+            break;
+        }
+    }
+    function verifyLoginForm() {
+        var uname = document.getElementById("txtUname").value;
+        var pwd = document.getElementById("txtPwd").value;
+
+        if(uname == "" && pwd == ""){
+            document.getElementById("errUname").innerHTML = "User name is mandatory";
+            document.getElementById("errPwd").innerHTML = "User password is mandatory";
+        }
+
+        if(uname == userData.userName && pwd == userData.userPwd) {
+            location.href = "../JavaScript/JavascriptStatements/MovieBookingSite.html"
+        } else {
+            loginAttempts -= 1;
+            document.getElementById("errLogin").innerHTML = "Login is failed you've " +loginAttempts+ " available";
+            if(loginAttempts == 0){
+                document.getElementById("txtUname").disabled = true;
+                document.getElementById("txtPwd").disabled = true;
+                document.getElementById("btnLogin").disabled = true;
+                document.getElementById("errLogin").innerHTML = "You are not allowed to login Try after 24 hours";
+            }
+            
+        }
+    }
+</script>
+<body>
+    <div class="container">
+        <div class="form-signin">
+            <h2 class="text-secondary">Login Form</h2>
+            <div>
+                <label for="username">User Name</label>
+                <input id="txtUname" class="form-control" type="text" onblur="removeErrMsg(this.id)"
+                 name="username" placeholder="eg: enter username">
+                <span id="errUname" class="errorMsg"></span>
+            </div>
+            <div>
+                <label for="username">User Name</label>
+                <input id="txtPwd" class="form-control" type="text" onblur="removeErrMsg(this.id)"
+                 name="username"  placeholder="eg: enter your password">
+                <span id="errPwd" class="errorMsg"></span>
+            </div>
+            <br>
+            <div>
+                <button onclick="verifyLoginForm()" id="btnLogin" class="btn btn-primary btn-block">Login</button>
+            </div>
+            <span id="errLogin" class="errorMsg"></span>
+        </div>
+    </div>
+</body>
+</html>
