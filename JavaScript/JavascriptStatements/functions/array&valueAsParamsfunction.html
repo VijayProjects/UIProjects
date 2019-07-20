@@ -1,0 +1,15 @@
+<script>
+    var cities = ["Delhi","Hyderbad","Mumbai","Chennai"];
+   function f1(collection,count) {
+       for(var i=0; i<collection.length; i++) {
+         document.write("<h2 style='color:blue'>" +collection[i]+ "</h2><br/>");
+       }
+       if(count!=undefined) {
+           document.write("<h2 style='color:blue'>Cites count is :" +count+ "</h2>");
+       }
+   }
+   //f1(cities,cities.length);//valid
+   //f1(cities); //valid
+   //f1("Delhi","Hyderbad","Mumbai","Chennai");// unwanted output
+   
+</script>

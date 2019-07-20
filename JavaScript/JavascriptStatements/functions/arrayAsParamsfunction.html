@@ -1,0 +1,16 @@
+<script>
+    var cities = ["Delhi","Hyderbad","Mumbai","Chennai"];
+   function f1(collection) {
+       //approach#1 to read values from collection using for 
+       for(var i=0; i<collection.length; i++) {
+         document.write("<h2 style='color:blue'>" +collection[i]+ "</h2><br/>");
+       }
+       document.write("Approach#2:<br>");
+       //approach#2 to read values from collection using for 
+       for(var item of collection) {
+         document.write("<h2 style='color:blue'>" +item+ "</h2><br/>");
+       }
+       
+   }
+   f1(cities);
+</script>
