@@ -39,8 +39,10 @@
             location.href = "../JavaScript/JavascriptStatements/MovieBookingSite.html"
         } else {
             loginAttempts -= 1;
-            document.getElementById("errLogin").innerHTML = "Login is failed you've " +loginAttempts+ " available";
+            document.getElementById("errLogin").innerHTML = "Login is failed you've " +loginAttempts+ "attempts  available";
             if(loginAttempts == 0){
+                document.getElementById("txtUname").innerHTML = "";
+                document.getElementById("txtPwd").innerHTML = "";
                 document.getElementById("txtUname").disabled = true;
                 document.getElementById("txtPwd").disabled = true;
                 document.getElementById("btnLogin").disabled = true;

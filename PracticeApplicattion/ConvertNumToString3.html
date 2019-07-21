@@ -1,18 +1,19 @@
-<html>
+<html html>
 
 <head>
 
     <title>HTML - Convert numbers to words using JavaScript</title>
 
     <script  type="text/javascript">
-    	function onlyNumbers(evt) {
-    var e = event || evt; // For trans-browser compatibility
-    var charCode = e.which || e.keyCode;
+    /* 	function onlyNumbers(evt) {
+        var e = evt; 
+        var charCode = e.which || e.keyCode;
 
-    if (charCode > 31 && (charCode < 48 || charCode > 57))
-        return false;
-    return true;
-}
+        if (charCode > 31 && (charCode < 48 || charCode > 57)) {
+            return false;
+        }
+        return true;
+} */
 
 function NumToWord(inputNumber, outputControl) {
     var str = new String(inputNumber)
@@ -104,25 +105,6 @@ function NumToWord(inputNumber, outputControl) {
             case 8:
                 aboveTens();
                 break;
-
-            //            This is optional. 
-
-            //            case 9:
-            //                if ((rev[i] == 0) || (rev[i + 1] == 1)) {
-            //                    word[j] = '';
-            //                }
-            //                else {
-            //                    word[j] = once[rev[i]];
-            //                }
-            //                if (rev[i + 1] !== '0' || rev[i] > '0') {
-            //                    word[j] = word[j] + " Arab";
-            //                }
-            //                break;
-
-            //            case 10:
-            //                aboveTens();
-            //                break;
-
             default: break;
         }
         j++;
@@ -141,28 +123,22 @@ function NumToWord(inputNumber, outputControl) {
     }
     document.getElementById(outputControl).innerHTML = finalOutput;
 }
-    </script>
+</script>
 
 </head>
 
 <body>
 
-    <h1>
-
-        HTML - Convert numbers to words using JavaScript</h1>
-
+    <h1> HTML - Convert numbers to words using JavaScript</h1>
     <input id="Text1" type="text" onkeypress="return onlyNumbers(this.value);" onkeyup="NumToWord(this.value,'divDisplayWords');"
+        maxlength="9" style="background-color: #efefef; border: 2px solid ; font-size: small" />
 
-        maxlength="9" style="background-color: #efefef; border: 2px solid #CCCCC; font-size: large" />
+    <br/>
 
-    <br />
+    <br/>
 
-    <br />
+    <span id="divDisplayWords" style="font-size: 13; color: blue; font-family: Arial;">
 
-    <div id="divDisplayWords" style="font-size: 13; color: Teal; font-family: Arial;">
-
-    </div>
-
+    </span>
 </body>
-
 </html>
