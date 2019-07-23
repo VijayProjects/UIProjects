@@ -1,0 +1,18 @@
+<script>
+    class Product {
+        id;
+        name;
+        price;
+        printProduct(id, name, price) {
+            this.id = id;
+            this.name = name;
+            this.price = price;
+            document.write("ProductId = "+this.id+"<br>"+"ProductName = "+this.name+"<br>"
+                        +"Price = "+this.price+"<br>") ;
+        };
+    }
+    var shoe = new Product();
+    shoe.printProduct(1001,'Nike Casuals',1388.99);
+    var tv = new Product();
+    tv.printProduct(1002,'Samsung TV',54990.99);
+</script>
