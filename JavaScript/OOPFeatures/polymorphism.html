@@ -1,0 +1,34 @@
+<script>
+    class Employee {
+        firstName = "David";
+        lastName = "Ray";
+        designation = "Java Developer";
+        print() {
+            document.write(this.firstName +" "+ this.lastName + " "+this.designation+"<br>");
+        }
+    }
+    class FullTimeEmployee extends Employee {
+        firstName = "John";
+        lastName = "Marks";
+        designation = "Manager";
+        print() {
+            document.write(this.firstName +" "+ this.lastName + " "+this.designation+"<br>");
+        }
+    }
+    class PartTimeEmployee extends Employee {
+        firstName = "Arjun";
+        lastName = "Pandya";
+        designation = "Cleark";
+        print() {
+            document.write(this.firstName +" "+ this.lastName + " "+this.designation);
+        }
+    }
+    var employees = new Array();
+    employees[0] = new Employee();
+    employees[1] = new FullTimeEmployee();
+    employees[2] = new PartTimeEmployee();
+
+    for(let employee of employees) {
+        employee.print();
+    }
+</script>

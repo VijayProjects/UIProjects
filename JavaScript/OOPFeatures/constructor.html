@@ -1,0 +1,14 @@
+<script>
+    class DataBase {
+        constructor(dbName) {
+            document.write("Connected to "+dbName+"<br>");
+        }
+        insert(){
+            document.write("Records are inserted<br>");
+        }
+    }
+    var mySql = new DataBase("MySql");
+    mySql.insert();
+    var oracle = new DataBase("Oracle");
+    oracle.insert();
+</script>
