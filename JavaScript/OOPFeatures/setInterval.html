@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <script>
+            function GetTime() {
+                var date = new Date().toLocaleTimeString();
+                document.getElementById("txtDate").innerHTML = date;
+            }
+            function bodyload() {
+                window.cancel = setInterval(GetTime,1000);
+            }
+            function stopTime() {
+                clearInterval(cancel);
+            }
+            function startTime() {
+                window.cancel = setInterval(GetTime,1000);
+            }
+        </script>
+    </head>
+    <body onload="bodyload()">
+        <h2 align="center" id="txtDate"></h2>
+        <div align="center">
+            <button onclick="stopTime()">Stop</button>
+            <button onclick="startTime()">Start</button>
+        </div>
+    </body>
+</html>
