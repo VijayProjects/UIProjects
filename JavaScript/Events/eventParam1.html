@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>JS | Event Param</title>
+        <link rel="stylesheet" href="../../node_modules/bootstrap/dist/css/bootstrap.css">
+        <script>
+            function changeColor(evt) {
+                var lblColor = document.getElementById("lblColor");
+                var xAxis = evt.clientX;
+                var yAxis = evt.clientY;
+                
+                if(xAxis >=127 && xAxis <=370) {
+                  if(yAxis<=147) {
+                    lblColor.style.color = "red";
+                  }
+                } //for red
+                
+                if(xAxis >=127 && xAxis <=370) {
+                  if(yAxis >=152 && yAxis<=387) {
+                    lblColor.style.color = "purple";
+                  } //for pink
+                }
+
+                if(xAxis >=371 && xAxis <=638) {
+                  if(yAxis<=147) {
+                    lblColor.style.color = "blue";
+                  }
+                } //for red
+                if(xAxis >=371 && xAxis <=637) {
+                  if(yAxis >=152 && yAxis<=387) {
+                    lblColor.style.color = "gray";
+                  } //for pink
+                }
+            }
+        </script>
+    </head>
+    <body>
+        <div class="container">
+            <h2>Click on Image to Choose Color</h2>
+            <div>
+                <img onclick="changeColor(event)" src="../../Images/panel.png">
+            </div>
+            <br><br>
+            <h2 id="lblColor">This is Javascript Event</h2>
+        </div>
+    </body>
+</html>

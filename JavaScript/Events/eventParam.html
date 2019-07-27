@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>JS | Event Param</title>
+        <link rel="stylesheet" href="../../node_modules/bootstrap/dist/css/bootstrap.css">
+        <script>
+            function changeColor(evt) {
+                var lblColor = document.getElementById("lblColor");
+                var xAxis = evt.clientX;
+               // document.write(xAxis);
+                if(xAxis >=128 && xAxis <=375) {
+                    lblColor.style.color = "red";
+                } else if(xAxis >=130 && xAxis <=638) {
+                    lblColor.style.color = "blue";
+                }
+            }
+        </script>
+    </head>
+    <body>
+        <div class="container">
+            <h2>Click on Image to Choose Color</h2>
+            <div>
+                <img onclick="changeColor(event)" src="../../Images/panel1.png">
+            </div>
+            <br><br>
+            <h2 id="lblColor">This is Javascript Event</h2>
+        </div>
+    </body>
+</html>
