@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>EMI Calculator</title>
+  <link rel="stylesheet" href="../../node_modules/bootstrap/dist/css/bootstrap.css">
+  <style>
+      .slidecontainer {
+        width: 100%;
+      }
+      
+      .slider {
+        -webkit-appearance: none;
+        width: 100%;
+        height: 5px;
+        border-radius: 5px;
+        background: #d3d3d3;
+        outline: none;
+        opacity: 0.7;
+        -webkit-transition: .2s;
+        transition: opacity .2s;
+      }
+      
+      .slider:hover {
+        opacity: 1;
+      }
+      
+      .slider::-webkit-slider-thumb {
+        -webkit-appearance: none;
+        appearance: none;
+        width: 15px;
+        height: 15px;
+        border-radius: 50%;
+        background: blue;
+        cursor: pointer;
+      }
+      
+      .amt-left-color {
+        font-size: 10px; 
+        color:blue;
+      }
+      .amt-right-color {
+        float:right;
+        font-size: 10px; 
+        color:blue;
+      }
+      </style>
+</head>
+<body>
+  <div class="container">
+    <br>
+      <div class="row ">
+        <div class="col-sm-4 clearfix" style="border:2px solid lightgrey">
+          <br>
+          <table width="100%">
+            <tr>
+              <td>
+                <b><label>Loan Amount</label></b>
+              </td>
+              <td align="right">
+                <div>
+                  &#8377;<span id="lblLoanAmt">99999</span>
+                </div>
+              </td>
+            </tr><!--/loanAmout-->
+            <tr>
+              <td colspan="2">
+                <div class="slidecontainer">
+                  <input type="range" min="1" max="100" value="0" class="slider" id="myRange">
+                  <span class="amt-left-color">0</span><span class="amt-right-color">40,00,000</span>
+                  <div style="border-bottom: 1px solid lightgray;"></div>
+                </div>
+              </td>
+            </tr><!--/Slider-->
+            <tr>
+              <td>
+                <b><label>Tenure(Year)</label></b>
+              </td>
+              <td align="right">
+                <div>
+                  &#8377;<span id="lblTenure">Years</span>
+                </div>
+              </td>
+            </tr><!--/Tenure(Year)-->
+            <tr>
+              <td colspan="2">
+                <div class="slidecontainer">
+                  <input type="range" min="1" max="5" value="0" class="slider" id="myRange">
+                  <span class="amt-left-color">1</span><span class="amt-right-color">5</span>
+                  <div style="border-bottom: 1px solid lightgray;"></div>
+                </div>
+              </td>
+            </tr><!--/Slider-->
+            <tr>
+              <td>
+                <b><label>Rate of interest</label></b>
+              </td>
+              <td align="right">
+                <div>
+                  &#8377;<span id="lblRateItr">_________</span>
+                </div>
+              </td>
+            </tr><!--/Rate of interest-->
+            <tr>
+              <td colspan="2">
+                <div class="slidecontainer">
+                  <input type="range" min="1" max="5" value="0" class="slider" id="myRange">
+                  <span class="amt-left-color">11.25%</span><span class="amt-right-color">21.25%</span>
+                  <div style="border-bottom: 1px solid lightgray;"></div>
+                </div>
+              </td>
+            </tr><!--/Slider-->
+          </table>
+          <br>
+          <div align="center">
+            <button class="btn btn-danger">Calculate</button>
+            <button class=" btn btn-outline-primary">Reset</button>
+          </div>
+          <br><br>
+        </div><!--leftpanel1-->
+        <div class="col-sm-3 clearfix bg-info">
+          <br>
+          <div style="border-bottom:1px solid lightgray">
+            <h5 class="text-white text-center">Equated Monthly Instalment</h5>
+            <h3 class="text-center text-white">&nbsp;4,500</h3>
+          </div>
+        </div><!--leftpanel2-->
+      </div><!--/row-->
+  </div>
+</body>
+</html>

@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Event | onblur and onfocus</title>
+    <script>
+      function textBlockLetter() {
+        document.getElementById("txtMsg").innerHTML = "Name Should be in Block Letters";
+      }
+      function txtUpperCase() {
+        var txtName = document.getElementById("txtName").value;
+        document.getElementById("txtName").value = txtName.toUpperCase();
+      }
+    </script>
+  </head>
+  <body>
+    <h2>Enter Name</h2>
+    <input onblur="txtUpperCase()" onfocus="textBlockLetter()" id="txtName" type="text" size="40" placeholder="Enter Block Letters">
+    <span id="txtMsg"></span>
+  </body>
+</html>

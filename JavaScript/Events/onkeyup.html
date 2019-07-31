@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Event | onkeyup</title>
+    <script>
+      function clickKeyUp() {
+        var txtName = document.getElementById("txtName").value;
+        document.getElementById("msg").innerHTML = txtName;
+      }
+    </script>
+  </head>
+  <body>
+    <h2>onkeyup Event in Js</h2>
+    <input id="txtName" onkeyup="clickKeyUp()" type="text">
+    <br><br>
+    <h2 id="msg"></h2>
+  </body>
+</html>

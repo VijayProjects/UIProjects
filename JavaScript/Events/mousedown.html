@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <script>
+            function ON() {
+                document.getElementById("pic").src ="../../Images/bulbon.jpg";
+            }
+            function OFF() {
+                document.getElementById("pic").src ="../../Images/bulboff.jpg";
+            }
+        </script>
+        <style>
+          div {
+            text-align: center;
+          }
+        </style>
+    </head>
+    <body>
+      <div>
+        <img onmousedown="ON()" onmouseup="OFF()" id="pic" src="../../Images/bulboff.jpg">
+        <p>Hold Down Mouse Button to ON Bulb</p>
+      </div>
+    </body>
+</html>

@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Images Slide Bar</title>
+        <link rel="stylesheet" href="../../node_modules/bootstrap/dist/css/bootstrap.css">
+        <link rel="stylesheet" href="../../Images/audi.jpg">
+        <script>
+            var indexChanged = 0;
+            var cars = [
+                {name: 'Audi-A8',photo: '../../Images/audi.jpg'},
+                {name: 'Ferrari',photo: '../../Images/ferrari.jpg'},
+                {name: 'Benz',photo: '../../Images/benz.jpg'},
+                {name: 'Vokswagner',photo: '../../Images/vokswagner.jpg'}
+            ];
+            function getCars(index) {
+                var lblName = document.getElementById("lblName");
+                var pic = document.getElementById("pic");
+                lblName.innerHTML = cars[index].name;
+                pic.src = cars[index].photo;
+            }
+            function getSliderBar() {
+                indexChanged++
+                if(indexChanged == cars.length) {
+                    indexChanged = 0;
+                }
+                getCars(indexChanged);
+            }
+            function clickToPlay() {
+                document.getElementById("status").innerHTML = "[Playing]";
+                window.pause = setInterval(getSliderBar,3000);
+            }
+            function clickToPause() {
+                document.getElementById("status").innerHTML = "[Pause]";
+                clearInterval(pause);
+            }
+            function bodyload() {
+               getCars(0);
+            }
+            function previousClick() {
+                indexChanged--;
+                getCars(indexChanged);
+            }
+            function nextClick() {
+                indexChanged++;
+                getCars(indexChanged);
+            }
+            function sliderChange(indexNo) {
+              getCars(indexNo-1);
+            }
+        </script>
+    </head>
+    <body onload="bodyload()">
+        <div class="container">
+            <div class="card text-center">
+                <div class="card-header">
+                    1<input id="txtChange" onchange="sliderChange(this.value)" type="range" min="1" max="4" value="1">4
+                    <h2 id="lblName"></h2>
+                    <h4 id="status"></h4>
+                </div>
+                <div class="card-body">
+                    <a href="javascript:previousClick()">
+                        <img src="../../Images/previous.jpg" width="60" height="60">
+                    </a>
+                    <img id="pic" height="400" width="800">
+                    <a href="javascript:nextClick()">
+                        <img src="../../Images/next.jpg" width="60" height="60">
+                    </a>
+                </div>
+                <div class="card-footer">
+                    <div>
+                        <button onclick="clickToPlay()" class="btn btn-primary">
+                            <font face="webdings">4</font>
+                        </button>
+                        <button onclick="clickToPause()" class="btn btn-primary">
+                            <font face="webdings">;</font>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>

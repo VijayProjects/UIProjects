@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+    <head>
+      <title>Animation | car moving</title>
+      <link rel="stylesheet" href="../../node_modules/bootstrap/dist/css/bootstrap.css">
+        <script>
+            function MovePic(){
+                px = px + 10;
+                document.getElementById("pic").style.marginLeft = px + "px";
+            }
+            var px=10;
+            function RightClick(){
+                px= px+10;
+                MovePic(px);
+            }
+            function LeftClick() {
+                px = px-10;
+                MovePic(px);
+            }
+            function StartClick() {
+                window.promise=setInterval(MovePic,500);
+            }
+            function PauseClick() {
+                clearInterval(promise);
+            }
+        </script>
+    </head>
+    <body>
+        <div>
+            <img id="pic" src="../../Images/movecar.gif" width="200" height="100">
+        </div>
+        <br>
+        <div>
+            <button class="btn btn-primary" onclick="RightClick()">Move Right</button>
+            <button class="btn btn-danger" onclick="LeftClick()">Move Left</button>
+            <button class="btn btn-success" onclick="StartClick()">Start</button>
+            <button class="btn btn-info" onclick="PauseClick()">Pause</button>
+        </div>
+    </body>
+</html>

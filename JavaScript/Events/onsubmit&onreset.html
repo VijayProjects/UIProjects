@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Event | onsubmit and onreset</title>
+    <link rel="stylesheet" href="../../node_modules/bootstrap/dist/css/bootstrap.css">
+    <script>
+    
+    </script>
+  </head>
+  <body>
+    <div class="container">
+      <form onsubmit="alert('You are submitted')" onreset="alert('You are canceled')">
+        <h2>onsubmit and onreset</h2>
+        Enter Your Name<input type="text" class="form-control" name="txtName">
+        <br>
+        Enter Password<input type="text" class="form-control" name="txtPwd">
+        <br>
+        <button class="btn btn-success">Submit</button>&nbsp;&nbsp;
+        <button class="btn btn-danger" type="reset">Reset</button>
+      </form>
+    </div>
+  </body>
+</html>
