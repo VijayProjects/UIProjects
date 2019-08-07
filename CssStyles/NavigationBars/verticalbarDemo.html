@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>CSS | vertical Navigation1</title>
+    <style type="text/css">
+      ul {
+        list-style-type: none;
+        margin: 0;
+        padding: 0;
+        width: 200px;
+        border: 1px solid #0a0f0f;
+      }
+     li a {
+        display: block;
+        padding: 8px 16px;
+        background-color:lightgray;
+        text-decoration: none;
+        border-bottom: 1px solid #0a0f0f;
+      }
+      li a:hover {
+        background-color: black;
+        color: white;
+      }
+      .active {
+        background-color: green;
+        color:white;
+      }
+      li:last-child {
+        border-bottom: none;
+      }
+    </style>
+  </head>
+  <body>
+    <ul>
+      <li><a href="#home" class="active">HOME</a></li>
+      <li><a href="#news">NEWS</a></li>
+      <li><a href="#contact">CONTACT</a></li>
+      <li><a href="#about">ABOUT</a></li>
+    </ul>
+  </body>
+</html>

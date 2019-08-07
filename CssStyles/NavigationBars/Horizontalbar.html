@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>CSS | Horizontal Nav Bar</title>
+    <style type="text/css">
+      ul {
+        list-style-type: none;
+        margin: 0;
+        padding: 0;
+        background-color: #333;
+        overflow: hidden;
+      }
+      li a {
+        display: block;
+        padding: 14px 16px;
+        color: #fff;
+        text-decoration: none;
+        font-size: 1.2rem;
+      }
+      li {
+        float: left;
+      }
+      li a:hover {
+        background-color: #111;
+      }
+      a.active {
+        background-color: green;
+      }
+      li:last-child {
+        float: right;
+        background-color: green;
+        border-right: none;
+      }
+      li {
+        border-right: 1px solid #bbb;
+      }
+    </style>
+  </head>
+  <body>
+    <ul>
+      <li><a class="active" href="#home">Home</a></li>
+      <li><a href="#news">News</a></li>
+      <li><a href="#contact">Contact</a></li>
+      <li><a href="#about">About</a></li>
+    </ul>    
+  </body>
+</html>

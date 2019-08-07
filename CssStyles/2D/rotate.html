@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>CSS | 2D</title>
+  <style>
+    div {
+      width: 200px;
+      height: 100px;
+      border: 1px solid;
+      background-color: yellow;
+    }
+    div.rotate {
+      box-shadow: 10px 10px 10px blue;
+      -ms-transform: rotate(20deg);/* IE 9*/
+      -webkit-transform: rotate(20deg);/* Safari and Chrome*/
+      transform: rotate(150deg);/* Stadard Syntax*/
+    }
+  </style>
+</head>
+<body>
+  <h2>2D Rotation</h2>
+  <div>This is normal one</div>
+  <div class="rotate">This is rotate with 2D effects</div>
+</body>
+</html>
