@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Angular Js | Filters</title>
+    <link rel="stylesheet" href="../node_modules/bootstrap/dist/css/bootstrap.css">
+    <script src="../node_modules/angular/angular.js"></script>
+    <script>
+      var app = angular.module("DemoApp", []);
+      app.controller("MainController", $scope => {
+        $scope.employees = [
+          {name:'Vijay', job: 'java senior developer', salary:5000, city:'Bangulur'},
+          {name:'Raja', job: 'UI developer', salary:3500, city:'Hyd'},
+          {name:'Asha', job: '.net developer', salary:4000, city:'Chennai'},
+          {name:'Ashok', job: 'java senior developer', salary:1000, city:'Bangulur'},
+          {name:'John', job: 'php developer', salary:4000, city:'Hyd'},
+          {name:'Varun', job: '.net developer', salary:5000, city:'Bangulur'},
+        ];
+      });
+    </script>
+  </head>
+  <body ng-app="DemoApp" ng-controller="MainController">
+    <div class="container">
+      <h1 class="text-primary">
+        <marquee>
+          Information About Employees 
+        </marquee>
+      </h1>
+      <div>
+        <label for="search">Search</label>
+        <input id="search" type="text" ng-model="searchText.city" class="form-control-sm">
+      </div>
+      <br>
+      <h2>Employee Details</h2>
+      <table class="table table-hover">
+        <thead class="bg-danger text-white">
+          <th>EmpId</th>
+          <th>EmpName</th>
+          <th>Desgnation</th>
+          <th>Salary</th>
+          <th>City</th>
+        </thead>
+        <tbody>
+          <tr ng-repeat="employee in employees | filter:searchText">
+            <td>{{($index)+1}}</td>
+            <td>{{employee.name}}</td>
+            <td>{{employee.job}}</td>
+            <td>{{employee.salary}}</td>
+            <td>{{employee.city}}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </body>
+</html>

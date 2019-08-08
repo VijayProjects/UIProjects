@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Directive | ngChange</title>
+  <link rel="stylesheet" href="../node_modules/bootstrap/dist/css/bootstrap.css">
+  <link rel="stylesheet" href="../node_modules/font-awesome/css/font-awesome.css">
+  <script src="../node_modules/angular/angular.js"></script>
+  <script>
+    var app = angular.module("DemoApp", []);
+    app.controller("HomeController", $scope =>{
+      $scope.categories = ['Electronics', 'Shoes', 'Watches', 'Fashions'];
+      $scope.products = [
+        {name:'Samsung TV', price:34880.99, category:'Electronics', photo:'../Images/tv1.jpg'},
+        {name:'Mobile', price:20000.99, category:'Electronics',photo:'../Images/mobile2.jpg'},
+        {name:'Fastrack', price:2500.99, category:'Watches',photo:'../Images/watch2.jpg'},
+        {name:'Women Special', price:5000.00, category:'Fashions',photo:'../Images/wmen.jpg'},
+        {name:'Women Offers', price:4000.95, category:'Fashions',photo:'../Images/wmen1.jpg'},
+        {name:'Lee Cooper Boot', price:2000.99, category:'Shoes',photo:'../Images/shoe1.jpg'},
+        {name:'Suites', price:15000.99, category:'Fashions',photo:'../Images/men3.jpg'},
+        {name:'Titan Watch', price:3500.99, category:'Watches',photo:'../Images/watch1.jpg'},
+        {name:'Lee Cooper Boot', price:1500.99, category:'Shoes',photo:'../Images/shoe3.jpg'},
+        {name:'Men Casuals', price:4000.99, category:'Fashions',photo:'../Images/men1.jpg'}
+      ];
+     
+     
+    });//controller
+  </script>
+  <style>
+    .slider {
+        -webkit-appearance: none;
+        height: 5px;
+        border-radius: 5px;
+        background: #d3d3d3;
+        outline: none;
+        opacity: 0.7;
+        -webkit-transition: 2s;
+        transition: opacity 2s;
+      }
+      
+      .slider:hover {
+        opacity: 1;
+      }
+      
+      .slider::-webkit-slider-thumb {
+        -webkit-appearance: none;
+        appearance: none;
+        width: 15px;
+        height: 15px;
+        border-radius: 50%;
+        background: blue;
+        cursor: pointer;
+      }
+    .img-hover,#imgEffect{
+     -webkit-transition: 2s;
+     -webkit-transform: scale(1.0);
+     -moz-transition: 2s;
+     -moz-transform: scale(1.0);
+     -o-transition: 2s;
+     -o-transform: scale(1.0);
+     -ms-transform: scale(1.0);
+      transform: scale(1.0);
+      transition: 2s;
+   }
+   .img-hover:hover,#imgEffect:hover{
+     -webkit-transition: 2s;
+     -webkit-transform: scale(2.0);
+     -moz-transition: 2s;
+     -moz-transform: scale(2.0);
+     -o-transition: 2s;
+     -o-transform: scale(2.0);
+     -ms-transform: scale(2.0);
+      transform: scale(2.0);
+      transition: 2s;
+   }
+   .scroll {
+    height: 500px;
+    width: 100%;
+    overflow: auto;
+   }
+   #footer {
+     height: 80px;
+     background-color:black;
+   }
+  </style>
+</head>
+<body ng-app="DemoApp" ng-controller="HomeController">
+  <div class="container">
+    <img id="banner" ng-src="../Images/amazon3.jpg" width="100%" >
+    <br>
+    <h2 class="text-danger">
+      <marquee>Amazon Shopping Cart Online..</marquee>
+    </h2>
+    <div class="row">
+      <div class="col-4 border-right">
+        <div class="form-group">
+          <label>Shop by Category</label>
+          <select class="form-control" ng-model="search.category" ng-options="item for item in categories"></select>
+        </div>
+        <div class="form-group">
+          <label>Search Product</label>
+          <input type="text" class="form-control" placeholder="eg: Mobile or Nike Casuals" ng-model="search.name">
+        </div>
+        <div class="form-group">
+          <label>Shop by price</label>
+          <input type="number" class="form-control" placeholder="eg: 1,000" ng-model="search.price">
+        </div>
+        <div class="form-group">
+          <lable>Shop by  with price range</lable>
+          <span class="float-right border-bottom border-primary text-primary">{{search.price | currency:'&#8377;'}}</span>
+          <br><br>
+          <input type="range" max="40000"  value="" class="slider form-control-range" ng-model="price">
+          0<span class="float-right">40,000.00</span>
+        </div>
+      </div> <!--/left panel-->
+      <div class="col-8 scroll">
+        <h2 class="text-success">Products Information</h2>
+        <div class="card-columns">
+          <div class="card text-center" ng-repeat="item in products | filter:search">
+            <div class="card-header bg-info text-white">
+              <h6>{{item.name}}</h6>
+            </div>
+            <div class="card-body">
+              <img id="imgEffect" class="img-hover" ng-src="{{item.photo}}" width="80" height="80">
+            </div>
+            <div class="card-footer bg-secondary text-white">
+              <h6>{{item.price | currency:'&#8377;'}}</h6>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <br>
+    <footer>
+      <div id="footer">
+          <br>
+          <h4 class="text-center text-white">All copyrights are reserved 2019-2020</h4>
+        </div>
+    </footer>
+  </div><!--/container-->
+</body>
+</html>

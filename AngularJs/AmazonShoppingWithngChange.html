@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Directive | ngChange</title>
+  <link rel="stylesheet" href="../node_modules/bootstrap/dist/css/bootstrap.css">
+  <link rel="stylesheet" href="../node_modules/font-awesome/css/font-awesome.css">
+  <script src="../node_modules/angular/angular.js"></script>
+  <script>
+    var app = angular.module("DemoApp", []);
+    app.controller("HomeController", $scope =>{
+      $scope.lstCategories = "";
+      $scope.selectedCategory = [];
+      $scope.lstProducts = "";
+      $scope.productName ="";
+      $scope.productPrice ="";
+      $scope.productPhote ="";
+ 
+      $scope.showProductImg = false;
+      $scope.showCart = false;
+      $scope.cartItems = [];
+      $scope.categories = ['Electronics', 'Shoes'];
+      $scope.electronics = ['Samsung TV', 'Mobile'];
+      $scope.shoes = ['Nike Casuals', 'Lee Cooper Boot'];
+      $scope.products = [
+        {prodName:'Samsung TV', prodPrice:34880.99, prodPhoto:'../../Images/tv.jpg'},
+        {prodName:'Mobile', prodPrice:14660.99, prodPhoto:'../Images/mobile.jpg'},
+        {prodName:'Nike Casuals', prodPrice:1470.99, prodPhoto:'../Images/shoe.jpg'},
+        {prodName:'Lee Cooper Boot', prodPrice:1880.99, prodPhoto:'../Images/shoe1.jpg'},
+      ];
+     
+      $scope.shoesImg = ['../Images/shoe.jpg', '../Images/shoe1.jpg', '../Images/shoe2.jpg', '../Images/shoe3.jpg'];
+      $scope.mobileImg = ['../Images/mobile.jpg', '../Images/mobile1.jpg', '../Images/mobile2.jpg', '../Images/mobile3.jpg'];
+      $scope.menImg = ['../Images/men.jpg', '../Images/men1.jpg', '../Images/men2.jpg', '../Images/men3.jpg'];
+      $scope.womenImg = ['../Images/wmen.jpg', '../Images/wmen1.jpg', '../Images/wmen2.jpg', '../Images/wmen3.jpg'];
+      $scope.tvImg = ['../Images/tv.jpg', '../Images/tv1.jpg', '../Images/tv2.jpg', '../Images/tv3.jpeg'];
+      $scope.watchImg = ['../Images/watch.jpg', '../Images/watch1.jpg', '../Images/watch2.jpg', '../Images/watch3.jpg'];
+
+      $scope.showProducts = true;
+      //function for category changed
+      $scope.changedCategory = () => {
+        switch($scope.lstCategories) {
+          case 'Electronics' :$scope.selectedCategory = $scope.electronics;
+          break;
+          case 'Shoes' :$scope.selectedCategory = $scope.shoes;
+          break;
+        }
+      }
+      //function for get Product Details
+      $scope.getProuductDetails = index => {
+        $scope.productName = $scope.products[index].prodName;
+        $scope.productPrice = $scope.products[index].prodPrice;
+        $scope.productPhoto = $scope.products[index].prodPhoto;
+      }
+      //function for product changed
+      $scope.changedProduct = () => {
+        $scope.showProductImg = true;
+        switch($scope.lstProducts) {
+          case 'Samsung TV' :$scope.getProuductDetails(0);
+          break;
+          case 'Mobile' :$scope.getProuductDetails(1);
+          break;
+          case 'Nike Casuals' :$scope.getProuductDetails(2);
+          break;
+          case 'Lee Cooper Boot' :$scope.getProuductDetails(3);
+          break;
+        }
+      }
+      //function for add item to cart list
+      $scope.addItemToCart = () => {
+        $scope.addItem = {
+          Id: $scope.cartItems.length + 1,
+          Name: $scope.productName,
+          Price: $scope.productPrice,
+          Category: $scope.lstCategories,
+          Photo: $scope.productPhoto
+        }
+        //push item into cartItems array
+        $scope.cartItems.push($scope.addItem);
+        alert("Item is added into cart successfully..!");
+        $scope.showProducts = false;
+        $scope.showCart = true;
+      }
+      //function for delete item from cart
+      $scope.deleteItem = index => {
+        delItem = confirm('Are you sure to delete?');
+        (delItem === true)?$scope.cartItems.splice(index, 1) : "";
+      }
+
+    });//controller
+  </script>
+  <style>
+    .img-hover,#imgEffect{
+     -webkit-transition: 2s;
+     -webkit-transform: scale(1.0);
+     -moz-transition: 2s;
+     -moz-transform: scale(1.0);
+     -o-transition: 2s;
+     -o-transform: scale(1.0);
+     -ms-transform: scale(1.0);
+      transform: scale(1.0);
+      transition: 2s;
+   }
+   .img-hover:hover,#imgEffect:hover{
+     -webkit-transition: 2s;
+     -webkit-transform: scale(2.0);
+     -moz-transition: 2s;
+     -moz-transform: scale(2.0);
+     -o-transition: 2s;
+     -o-transform: scale(2.0);
+     -ms-transform: scale(2.0);
+      transform: scale(2.0);
+      transition: 2s;
+   }
+   #scroll {
+    height: 400px;
+    width: 100%;
+    overflow: auto;
+   }
+   #footer {
+     height: 80px;
+     background-color:black;
+   }
+  </style>
+</head>
+<body ng-app="DemoApp" ng-controller="HomeController">
+  <div class="container">
+    <img id="banner" ng-src="../Images/amazon.jpg" width="100%" height="200px;">
+    <br>
+    <h2 class="text-primary">
+      <marquee>Amazon Shopping Cart Online..</marquee>
+    </h2>
+    <div class="row">
+      <div class="col-5">
+        <div class="form-group">
+            <lable>Select a Category</lable>
+            <select ng-change="changedCategory()" class="form-control" ng-model="lstCategories" ng-options= "item for item in categories"></select>
+        </div>
+        <div class="form-group">
+            <lable>Select a Product</lable>
+            <select ng-change="changedProduct()" class="form-control" ng-model="lstProducts" ng-options="item for item in selectedCategory"></select>
+        </div>
+        <div ng-show="showProductImg" class="form-group">
+          <div class="card text-center text-white">
+            <div class="card-header bg-danger">
+              <h3>{{productName}}</h3>
+            </div>
+            <div class="card-body">
+              <img id="imgEffect" ng-src="{{productPhoto}}" width="250" height="200">
+            </div>
+            <div class="card-footer bg-danger">
+              <h3>{{productPrice | currency: '&#8377;'}}</h3>
+            </div>
+          </div>
+          <br>
+          <button ng-click="addItemToCart()" class="btn btn-outline-success">Add To Cart</button>
+        </div> 
+      </div><!-- left panel-->
+      <div class="col-7">
+        <div id="scroll" ng-show="showProducts">
+          <h4>Shoe Updates:</h4>
+          <div class="row">
+            <div class="col p-3" ng-repeat="shoe in shoesImg">
+              <td>
+                <img class="img-hover" ng-src="{{shoe}}"  width="80" height="100">
+              </td>
+            </div>
+          </div><!--/shoe-->
+          <br>
+          <h4>Women Dresses Updates:</h4>
+          <div class="row">
+            <div class="col p-3" ng-repeat="women in womenImg">
+              <td>
+                <img class="img-hover" ng-src="{{women}}"  width="80" height="100">
+              </td>
+            </div>
+          </div><!--/women dress-->
+          <br>
+          <h4>Men Dresses Updates:</h4>
+          <div class="row">
+            <div class="col p-3" ng-repeat="men in menImg">
+              <td>
+                <img class="img-hover" ng-src="{{men}}"  width="80" height="100">
+              </td>
+            </div>
+          </div><!--/men dress-->
+          <br>
+          <h4>Watches Updates:</h4>
+          <div class="row">
+            <div class="col p-3" ng-repeat="watch in watchImg">
+              <td>
+                <img class="img-hover" ng-src="{{watch}}"  width="80" height="100">
+              </td>
+            </div>
+          </div><!--/Watch-->
+          <br>
+          <h4>Mobiles Updates:</h4>
+          <div class="row">
+            <div class="col p-3" ng-repeat="mobile in mobileImg">
+              <td>
+                <img class="img-hover" ng-src="{{mobile}}"  width="80" height="100">
+              </td>
+            </div>
+          </div><!--/Mobile-->
+          <br>
+          <h4>TV's Updates:</h4>
+          <div class="row">
+            <div class="col p-3" ng-repeat="tv in tvImg">
+              <td>
+                <img class="img-hover" ng-src="{{tv}}"  width="80" height="100">
+              </td>
+            </div>
+          </div><!--/tv-->
+        </div>
+        <div ng-show="showCart" class="form-group">
+           <h3 class="text-success">List of items in cart-({{cartItems.length}})</h3>
+           <table class="table table-hover">
+             <thead class="bg-dark text-white text-uppercase">
+              <th>Item_Id</th>
+              <th>Item_Name</th>
+              <th>Item_Price</th>
+              <th>Item_Category</th>
+              <th>Item_Photo</th>
+              <th>Actions</th>
+             </thead>
+             <tbody>
+               <tr ng-repeat="item in cartItems">
+                 <td>{{item.Id}}</td>
+                 <td>{{item.Name}}</td>
+                 <td>{{item.Price}}</td>
+                 <td>{{item.Category}}</td>
+                 <td>
+                  <img ng-src="{{item.Photo}}" height="50" width="50">
+                 </td>
+                 <td>
+                   <button ng-click="deleteItem($index)" class="btn btn-danger">
+                      <i class="fa fa-trash-o"></i>
+                  </button>
+                 </td>
+               </tr>
+             </tbody>
+           </table>
+        </div>
+      </div><!-- right panel-->
+    </div>
+    <br><br>
+    <div id="footer">
+      <br>
+      <h4 class="text-center text-white">All copyrights are reserved 2019-2020</h4>
+    </div>
+  </div><!--/container-->
+</body>
+</html>
