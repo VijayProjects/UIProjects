@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>JQuery | focus and blur</title>
+    <script src="../../node_modules/jquery/dist/jquery.js"></script>
+    <script>
+      $(document).ready(function() {
+        $("input[type='text']").on({
+          focus: function() {
+            $(this).css("background-color", "yellow");
+          },
+          blur: function() {
+            var txtName = $(this).val();
+            $(this).val(txtName.toUpperCase());
+            $(this).css({'background-color':'green','color':'white'});
+          },
+          keyup: function() {
+            var txtName = $(this).val();
+            $("h1").html(txtName);
+          }
+        }); 
+        $("h1").on({
+          mouseenter: function() {
+            $("h1").css({'color':'red'});
+          },
+          mouseleave: function() {
+            $("h1").css({'color':'blue'});
+          }
+        });
+      });
+    </script>
+    <style>
+      input[type="text"] {
+        padding: 10px;
+        margin:10px;
+        font-family: Georgia, 'Times New Roman', Times, serif;
+        font-size: 1.2rem;
+      }
+    </style>
+  </head>
+  <body>
+    Your Name:<input type="text" size="50">
+    <br>
+    <h1></h1>
+  </body>
+  </html>
+</html>

@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head></head>
+  <title>JQuery | keyevents</title>
+  <script src="../../node_modules/jquery/dist/jquery.js"></script>
+  <script>
+    $(document).ready(function() {
+      var txtValue = "";
+      $("input[type='text']").keyup(function(event) {
+        txtValue = $(this).val();
+        $("h1").html(txtValue+" "+event.keyCode);
+      });   
+    });
+  </script>
+  <style>
+    input[type="text"] {
+      padding: 10px;
+      margin:10px;
+      font-family: Georgia, 'Times New Roman', Times, serif;
+      font-size: 1.2rem;
+    }
+  </style>
+</head>
+<body>
+  Your Name:<input type="text" size="50">
+  <br>
+  <h1></h1>
+</body>
+</html>

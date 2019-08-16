@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>JQuery | Mouse Events</title>
+    <script src="../../node_modules/jquery/dist/jquery.js"></script>
+    <script>
+      $(document).ready(function() {
+        //mouseenter and mouseleave
+        $("#mouse").on({
+          mouseenter: function() { $(this).css({'color':'red'}); },
+          mouseleave: function() { $(this).css({'color':'green'}); },
+          mousedown: function() { $(this).css("font-size", "30px"); },
+          mouseup: function() { $(this).css("font-size", "16px"); }
+        });
+        //mousedown and mouseup
+        $("img").on({
+          mousedown: function () {
+            $(this).attr("src", "../images/bulbon.jpg");
+          },
+          mouseup: function () {
+            $(this).attr("src", "../images/bulboff.jpg");
+          }
+        });
+      });
+    </script>
+  </head>
+  <body>
+    <h2>mouseenter and mouseleave(Event)</h2>
+    <div id="mouse">JQuery Event</div>
+    <h2>mousedown and mouseup(Event)</h2>
+    <img src="../Images/bulboff.jpg">
+  </body>
+</html>

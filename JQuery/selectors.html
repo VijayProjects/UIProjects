@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>JQuery | Selectors</title>
+    <script src="../node_modules/jquery/dist/jquery.js"></script>
+    <script>
+      $(document).ready( function() {
+        $("*").css({'font-size':'40px'});
+        $("button").click(function() {
+          $("p").hide();
+          $("#bg").css({'background-color':'red','color':'white'});
+          $(".msg").fadeOut(2000);
+        });
+      });
+    </script>
+  </head>
+  <body>
+    <button>Test Here</button>
+    <p>This is paragraph <strong>type</strong> selector</p>
+    <div id="bg">This Heading is <strong>id</strong> selector</div>
+    <div class="msg">This is <strong>class</strong> selector</div>
+  </body>
+</html>

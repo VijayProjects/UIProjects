@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>JQuery | chaining</title>
+    <script src="../../node_modules/jquery/dist/jquery.min.js"></script>
+    <script>
+      $(document).ready(function() {
+        $("button").click(function() {
+          $("div").css("color", "red").slideUp(2000).slideDown(1000);
+        });
+      });
+    </script>
+  </head>
+  <body>
+    <button>start</button>
+    <br>
+    <div>Hello ! Vijay</div>
+  </body>
+</html>

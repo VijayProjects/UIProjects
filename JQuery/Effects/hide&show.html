@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>JQuery | hide,show and toggle</title>
+    <script src="../../node_modules/jquery/dist/jquery.js"></script>
+    <script>
+      $(document).ready(function(){
+        $("p").css({'font-size':'30px','color':'red'});
+        $("#hide").click(function() {
+          $("p").hide(2000);
+        });
+        $("#show").click(function() {
+          $("p").show(2000);
+        });
+        $("#toggle").click(function() {
+          $("p").toggle(3000);
+        });
+      });
+    </script>
+  </head>
+  <body>
+    <button id="hide">Hide</button>
+    <button id="show">Show</button>
+    <button id="toggle">Toggle</button>
+    <br>
+    <p>This is Paragraph</p>
+  </body>
+</html>

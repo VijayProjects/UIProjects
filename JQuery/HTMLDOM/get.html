@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>JQuery | Get Data</title>
+    <script src="../../node_modules/jquery/dist/jquery.js"></script>
+    <script>
+      $(document).ready(function() {
+        $("button").click(function() {
+          var txtName = $("#txtName").val();
+          var attrs = $("#txtName").attr('type');
+          $("#Name").html(txtName);
+          $("#Type").html(attrs);
+          
+        });
+      });
+    </script>
+  </head>
+  <body>
+    <button>Get Details</button><br>
+    <input id="txtName" type="text" value="Vijay"><br>
+    YourName:<span id="Name"></span> <br>
+    input type:<span id="Type"></span>
+  </body>
+</html>

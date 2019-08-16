@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>JQuery | slide</title>
+    <script src="../../node_modules/jquery/dist/jquery.js"></script>
+    <script>
+      $(document).ready(function() {
+        $("#flip").click(function() {
+         // $("#panel").slideDown(2000);
+         // $("#panel").slideUp(2000);
+         $("#panel").slideToggle(2000);
+        });
+      });
+    </script>
+    <style>
+      #panel, #flip {
+        background-color: #e5eecc;
+        border: 1px solid #c3c3c3;
+        padding: 5px;
+        text-align: center;
+      }
+      #panel {
+        height: 100px;
+        padding: 50px;
+        display: none;
+      }
+      div {
+        cursor: pointer;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="flip">Click here to slideUp/slideDown Panel</div>
+    <div id="panel">Hello World !</div>
+  </body>
+</html>

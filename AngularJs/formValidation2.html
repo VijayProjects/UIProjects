@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Angular Js | Form Validations</title>
+    <link rel="stylesheet" href="../node_modules/bootstrap/dist/css/bootstrap.css">
+    <script src="../node_modules/angular/angular.js"></script>
+    <style>
+      input.ng-invalid {
+        border: 2px solid red;
+      }
+      input.ng-valid {
+        border: 2px solid green;
+      }
+    </style>
+  </head>
+  <body ng:app>
+    <div class="container">
+      <h2>Angular Error ($error) Service</h2>
+      <form name="frmRegister">
+        <div class="form-group">
+          <label>User Name</label>
+          <div>
+            <input placeholder="Name should be between 4 to 10 letters"  type="text" ng-model="txtName" name="txtName" class="form-control" ng_minlength="4" ng_maxlength="10" required>
+          </div>
+        </div>
+        <div class="form-group">
+          <label>Mobile Number</label>
+          <div>
+            <input placeholder="Number starts with +91" type="text" ng-model="txtMobile" name="txtMobile" class="form-control" required pattern="\+91[0-9]{10}">
+          </div>
+        </div>
+        <br>
+        <button x:ng:disabled="frmRegister.$invalid" class="btn btn-primary btn-block">Register</button>
+      </form>
+    </div>
+  </body>
+</html>

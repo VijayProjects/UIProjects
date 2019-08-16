@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>JQuery | callback</title>
+    <script src="../../node_modules/jquery/dist/jquery.min.js"></script>
+    <script>
+      $(document).ready(function() {
+        $("button").click(function() {
+          $("div").hide(2000, function() {
+            alert("Your text is hidden");
+          });
+        });
+      });
+    </script>
+  </head>
+  <body>
+    <button>Hide</button>
+    <br>
+    <div>Hello ! Vijay</div>
+  </body>
+</html>
