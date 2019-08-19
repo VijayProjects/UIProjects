@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>AngularJs | Routing</title>
+  <link rel="stylesheet" href="../node_modules/bootstrap/dist/css/bootstrap.css">
+  <script src="../node_modules/angular/angular.js"></script>
+  <script src="../node_modules/angular/angular-route.js"></script>
+  <script>
+    var app = angular.module("DemoApp", ['ngRoute']);
+      //config routing
+      app.config(function($routeProvider) {
+      $routeProvider.when("/", {templateUrl:'home.html'})
+                    .when("/home", {templateUrl:'home.html'})
+                    .when("/about", {templateUrl:'about.html'})
+                    .when("/contact", {templateUrl:'contact.html'})
+                    .when("/amazon", {templateUrl:'AmazonShoppingWithngChange.html'});
+    });
+    //controller
+    app.controller("HomeController", function($scope) {  
+    });
+  </script>
+</head>
+<body ng-app="DemoApp" ng-controller="HomeController">
+  <div class="container">
+    <div class="jumbotron text-center w-100">
+      <h2>Welcome To NareshIT | Hyderabad</h2>
+    </div>
+    <div class="row">
+        <div class="col-md-3 border-right">
+          <ul>
+            <li><a href="#!home">Home</a></li>
+            <li><a href="#!about">About</a></li>
+            <li><a href="#!contact">Contact</a></li>
+            <li><a href="#!amazon">Amazon Shopping</a></li>
+          </ul>
+        </div>
+        <div class="col-md-9">
+          <ng-view></ng-view>
+        </div>
+    </div>
+  </div>
+</body>
+</html>
