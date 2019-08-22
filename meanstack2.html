@@ -1,0 +1,177 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>TCS Get Employees Details</title>
+  <link rel="shortcut icon" href="Images/favicon.ico">
+  <link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap.css">
+  <link rel="stylesheet" href="node_modules/datatables.net-dt/css/jquery.dataTables.min.css">
+  <script src="node_modules/angular/angular.js"></script>
+  
+  <script src="node_modules/jquery/dist/jquery.js"></script>
+  <script src="node_modules/datatables.net/js/jquery.dataTables.min.js"></script>
+  <script src="node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
+  
+  <script>
+    var app = angular.module("DemoApp", []);
+    app.controller("HomeController", ($scope, $http) => {
+      $scope.products = [];
+      $scope.showForm = false;
+      $scope.successMsg = '';
+      $scope.failureMsg = '';
+      $scope.showStatusMsg = false;
+
+      //openRegiterForm
+      $scope.openRegisterForm = () => {
+        $scope.showForm = true;
+      }
+      $http.get("http://127.0.0.1:8989/getProducts").then(
+        function onsuccess(response) {
+          $scope.products = response.data;
+        },
+        function onfailed(response) {
+          $scope.products = [];
+        }
+      ); //getEmployees
+
+      $scope.formSubmit = products => {
+        alert('hi')
+     
+        $http.post("http://127.0.0.1:9090/addProduct", products)
+            .then(
+              function onsuccess(response) {
+              if(response.status === 200) {
+                $scope.showStatusMsg = true;
+                $scope.successMsg = 'Record is inserted Successfully !';
+              }
+          },
+          function onfailed(response) {
+            if(!response === 200) {
+              $scope.showStatusMsg = true;
+              $scope.failureMsg = 'Form submission is failed ?'
+            }
+          }
+        );
+      } 
+    });
+  </script>
+  <script>
+    $(document).ready( function () {
+      $('#prodTable').DataTable();
+    } );
+  </script>
+  <style>
+    /* Make the image fully responsive */
+    .carousel-inner img {
+        width: 100%;
+        height: 100%;
+    }
+  </style>
+</head>
+<body ng-app="DemoApp" ng-controller="HomeController">
+  <div class="container-fluid">
+    <!--navbar-->
+    <nav class="navbar navbar-expand-lg bg-primary navbar-dark sticky-top">
+      <a class="navbar-brand" href="#">
+        <img src="Images/tcs.logo.jpg" alt="Logo" style="width:40px;">
+      </a>
+      <ul class="navbar-nav">
+        <li class="nav-item">
+          <a class="nav-link" href="#">About</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">Contact</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">Services</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#" ng-click="openRegisterForm()">Register</a>
+        </li>  
+      </ul>
+      <div>
+          <form class="form-inline" action="#">
+            <input class="form-control-sm mr-sm-2" type="text" placeholder="Search">
+            <button class="btn btn-success" type="submit">Search</button>
+          </form>
+      </div>
+    </nav>      
+    <div id="demo" class="carousel slide" data-ride="carousel">
+      <!-- Indicators -->
+      <ul class="carousel-indicators">
+        <li data-target="#demo" data-slide-to="0" class="active"></li>
+        <li data-target="#demo" data-slide-to="1"></li>
+        <li data-target="#demo" data-slide-to="2"></li>
+      </ul>
+      
+      <!-- The slideshow -->
+      <div class="carousel-inner">
+        <div class="carousel-item active">
+          <img src="Images/tcs1.jpg" alt="" width="1100" height="500">
+        </div>
+        <div class="carousel-item">
+          <img src="Images/tcs2.jpg" alt="" width="1100" height="500">
+        </div>
+        <div class="carousel-item">
+          <img src="Images/tcs2.jpg" alt="" width="1100" height="500">
+        </div>
+      </div>
+      
+      <!-- Left and right controls -->
+      <a class="carousel-control-prev" href="#demo" data-slide="prev">
+        <span class="carousel-control-prev-icon"></span>
+      </a>
+      <a class="carousel-control-next" href="#demo" data-slide="next">
+        <span class="carousel-control-next-icon"></span>
+      </a>
+    </div>        
+    <span class="text-success text-center">{{successMsg}}</span>
+    <span class="text-danger">{{failureMsg}}</span>
+    <!--form-->
+    <div ng-if="showForm" class="bg-light w-100">
+      <br><br>
+      <div class="w-25 m-auto border border-secondary p-4 bg-light">
+        <h2 class="text-primary">Register Products</h2>
+        <form  method="POST"  ng-submit="formSubmit(product)">   
+          <div class="form-group">
+            <label>Product Id</label>
+            <input type="number" name="name" ng-model="product.id" class="form-control">
+          </div>
+          <div class="form-group">
+            <label>Product Name</label>
+            <input type="text" name="name" ng-model="product.name" class="form-control" placeholder="eg: shoe">
+          </div>
+          <div class="form-group">
+            <label>Price</label>
+            <input type="text" name="price" ng-model="product.price" class="form-control" placeholder="4000">
+          </div>
+          <br>
+          <button class="btn btn-block btn-outline-primary">Register</button>
+        </form>
+      </div><!--/form-->
+    </div>
+    <div class="h-25 m-auto">
+      <h2>Products Details</h2>
+      <table id="prodTable" class="table table-hover">
+        <thead class="text-uppercase bg-dark text-white">
+          <th>Sno</th>
+          <th>ProductId</th>
+          <th>ProductName</th>
+          <th>Price</th>
+        </thead>
+        <tbody>
+          <tr ng-repeat="prod in products">
+            <td>{{$index+1}}</td>
+            <td>{{prod.id}}</td>
+            <td>{{prod.name}}</td>
+            <td>{{prod.price}}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</body>
+</html>
